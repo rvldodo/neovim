@@ -78,8 +78,8 @@ return {
 
     -- configure typescript server with plugin
     lspconfig["tsserver"].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
+      capabilities = capabilities,
+      on_attach = on_attach,
     })
 
     -- configure css server
@@ -143,6 +143,34 @@ return {
               [vim.fn.stdpath("config") .. "/lua"] = true,
             },
           },
+        },
+      },
+    })
+
+    -- configure Go language server (gopls)
+    lspconfig["gopls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+            unreachable = false,
+            fieldalignment = true,
+          },
+          staticcheck = true,
+          usePlaceholders = true,
+          codelenses = {
+            generate = true,
+            gc_details = true,
+            tidy = true,
+          },
+          experimentalPostfixCompletions = true,
+          matcher = "fuzzy",
+          completeUnimported = true,
+          buildFlags = { "-tags", "integration" },
+          directoryFilters = { "-vendor/**" },
+          symbolMatcher = "fuzzy",
         },
       },
     })
