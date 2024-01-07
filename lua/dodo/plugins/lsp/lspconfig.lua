@@ -148,12 +148,6 @@ return {
     })
 
     -- configure Go language server (gopls)
-    vim.cmd([[
-      augroup GoImports
-       autocmd!
-       autocmd BufWritePre *.go :silent! execute 'GoImports' | edit
-      augroup END
-    ]])
     lspconfig["gopls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
