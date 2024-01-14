@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "dodo.plugins" }, { import = "dodo.plugins.lsp" } }, {
   install = {
-    colorscheme = { "vscode" },
+    colorscheme = { "xcodedarkhc" },
   },
   checker = {
     enabled = true,
